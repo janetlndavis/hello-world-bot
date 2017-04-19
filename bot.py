@@ -9,9 +9,13 @@ def get_next_chunk():
   # tweet the whole sentence if it's short enough
   if len(first_sentence) <= 140:
     chunk = first_sentence
-  # otherwise just print the first 140 characters
+  # otherwise print whole words up to the first 140 characters
   else:
-    chunk = first_sentence[0:140]
+    #chunk = first_sentence[0:140]
+    i=140
+    while (i > 1 and first_sentence[i] != ' '):
+        i -= 1
+    chunk = first_sentence[0:i+1]
 
   # delete what we just tweeted from the text file
   book.delete_message(chunk)
